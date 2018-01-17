@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="resources/images/edafav.png"
+	sizes="16x16">
+<link rel="icon" type="image/png" href="resources/images/edafav.png"
+	sizes="32x32">
+  <title>EDA | Web Chat</title>
+  
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/jquery-ui.css">
+  <script src="resources/js/jquery.min.js"></script>
+  <script src="resources/js/jquery-ui.js"></script>
+  <script src="resources/js/bootstrap.min.js"></script>
+
+   <link rel='stylesheet prefetch' href='resources/font-awesome/css/font-awesome.min.css'>
+
+
+      <link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="resources/css/uikit.min.css" />
+
+  <script>
+	var base_url = "${base_url}";
+</script>
+ 
+</head>
+
+<body  class="login_page" oncontextmenu="return false">
+ 
+  <div class="chatbox-holder">
+  <div class="chatbox login_box msg_box" style="display:none;">
+    <div class="chatbox-top">
+      <div class="chatbox-avatar">
+        <a target="_blank" href="javascript:;"><img src="resources/images/desktoplogoweb.png" /></a> 
+      </div>
+      <div class="chat-partner-name">
+        <span id="agentstatus" class="status away"></span>
+        <a id="chat_here"  href="javascript:;">EDA</a>
+      </div>
+      <div class="chatbox-icons">
+        <a href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+        <a href="javascript:void(0);" class="minclose"><i class="fa fa-close"></i></a>       
+      </div>      
+    </div>
+    
+    <div class="chat-messages cancel_drag" >
+    
+    <div class="error" style="color: red"></div>
+       <br><b style="color: black;margin-top: 10px;">Welcome</b>
+	   <span style="margin-top:5px;">Please enter your name and click <strong>Start chat</strong> to start a chat session with us. If we are available we will respond.</span>
+	   <span style="margin-top:15px;">If not please leave us a message or email us: edasupport@kggroup.com</span>
+	   <div id="error" style="color: red"></div>
+		<div class="input-group" style="margin-top:20px;">
+		  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+		  <input type="text" class="form-control" id="web_name" placeholder="Your name here..." aria-label="Username" aria-describedby="basic-addon1">
+		</div>
+		<div class="input-group" style="margin-top:20px;">
+		  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+		  <input type="text" class="form-control" id="web_email" placeholder="Your email id here..." aria-label="Username" aria-describedby="basic-addon1">
+		</div>
+		<div class="input-group" style="margin-top:20px;">
+		  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-building"></i></span>
+		  <select class="form-control" id="sel1">
+			<option>Which dept. would you like to speak to?</option>
+			<option value="General">General</option>
+			<option value="Tax">Tax</option>
+			<option value="Insurance">Insurance</option>
+			<option value="Floral">Floral</option>
+			
+		  </select>
+		</div>
+		
+		
+		
+		<div class="input-group" style="margin-top:20px;display: flex;width: 100%;">
+		  <span class="input-group-addon"  id="basic-addon1" style="width: 37px;"><i class="fa fa-pencil" style="margin-top: 15px;"></i></span>
+		  
+		  <textarea class="query" rows="3" style="width:100%;resize: none;padding-left: 15px;padding-top: 3px;" placeholder="Your query here..."></textarea>
+		</div>
+		
+		<div style="width: 100%;">
+		<button style="margin-top:10px;" type="button" id="web_login" query="" class="btn btn-primary pull-right web_login">Start Chat</button>
+		</div>
+		
+           
+    </div>
+	<div class="footer" style="width:100%;">
+		<span class="pull-right" style="margin-right: 10px;margin-bottom: 5px;">Powered by <span style="color:#000;">EDA</span></span>
+	</div>
+  </div>
+  
+  <div class="chatbox group-chat feedback_box" style="display:none;">
+    <div class="chatbox-top">
+      <div class="chatbox-avatar">
+        <a target="_blank" href="javascript:;"><img src="resources/images/desktoplogoweb.png" /></a>
+      </div>
+      
+      <div class="chat-group-name">
+        <span class="status online"></span>
+       <span class="nameofperson"></span>
+      </div>
+      <div class="chatbox-icons">
+        <!--<label for="chkSettings"><i class="fa fa-gear"></i></label><input type="checkbox" id="chkSettings" />
+        <div class="settings-popup">
+          <ul>
+            <li><a href="#">Group members</a></li>
+            <li><a href="#">Add members</a></li>
+            <li><a href="#">Delete members</a></li>
+            <li><a href="#">Leave group</a></li>
+          </ul>
+        </div>-->
+        <a href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+        <a href="javascript:void(0);" class="loginchat"><i class="fa fa-close"></i></a>       
+      </div>      
+    </div>
+    <br><div id="feedbackerror" style="color: red"></div>
+    <div class="chat-messages cancel_drag" style="height: 85%;">
+    <div>
+				Please rate your experience.<br>
+				Feedback
+			</div>
+			<br>
+			
+			<textarea id="feedback_input" class="" style="width:100%;margin-top:10px;resize: none;" rows="4"></textarea>
+			<center style="width: 100%;margin-top: 25px;letter-spacing: 6px;">
+				<a href="#" class="fa fa-star"  id="1" style="font-size: 45px;text-decoration: none;"></a>
+				<a href="#" class="fa fa-star"  id="2" style="font-size: 45px;text-decoration: none;"></a>
+				<a href="#" class="fa fa-star"  id="3" style="font-size: 45px;text-decoration: none;"></a>
+				<a href="#" class="fa fa-star"  id="4" style="font-size: 45px;text-decoration: none;"></a>
+				<a href="#" class="fa fa-star"  id="5" style="font-size: 45px;text-decoration: none;"></a>
+				<input type="hidden" name="whatever3" class="rating-value" value="4.1">
+			<button style="margin-top:20px;" type="button" class="btn btn-primary btnfeedback">Submit Feedback</button><br>
+			<img src="resources/images/thanku.png" style="width: 150px;margin-top: 35px;" />
+			</center>
+    </div>
+	<div class="footer" style="width:100%;">
+		<span class="pull-right" style="margin-right: 10px;margin-bottom: 5px;">Powered by <span style="color:#000;">EDA</span></span>
+	</div>
+  </div>
+  
+  <div class="chatbox " id="msg_box" style="display:none;"> <!--chatbox-min-->
+    <div class="chatbox-top">
+      <div class="chatbox-avatar">
+        <a target="_blank" href="javascript:;"><img src="resources/images/desktoplogoweb.png" /></a>
+      </div>
+      <div class="chat-partner-name">
+        <span class="status online"></span>
+        
+        <span class="nameofperson"></span>
+      </div>
+      <div class="chatbox-icons">
+        <a href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+        <a href="javascript:void(0);" id="closechat"><i class="fa fa-close"></i></a>       
+      </div>      
+    </div>
+    
+	<div class="popup-head">
+		<div class="popup-head-left pull-left">
+			<img src="resources/images/Arnold.jpg" alt="ramya">
+			<div style="float: right;margin-left: 7px;">
+				<span style="font-size:10px;">You are Chatting with</span>
+			<br> <span >Allen</span>
+			</div>
+		</div>
+			  <div class="popup-head-right pull-right">
+				<a  href="#" class="btn btn-xs btn-default closechat"><span class="fa fa-sign-out"></span> End Chat</a>
+			  </div>
+	  </div>
+	  
+    <div id="chat"  class="chat-messages_chat chat_box_wrapper chat_box_small chat_box_active cancel_drag" style="opacity: 1;height: 55% !important;display: block;transform: translateX(0px);">
+			 <div class="error" style="color: red"></div>
+			<div class="chat_box touchscroll chat_box_colors_a" id="msg_body">
+			
+				<div class="chat_message_wrapper chat_message_left">
+				<div class="chat_user_avatar">
+				
+				<a href="javascript:;" target="_blank" >
+				<img alt="Ramya" title="Ramya"  src="resources/images/Arnold.jpg" class="md-user-image">
+				</a>
+			</div>
+			<ul class="chat_message"><li id="msg_a"><p>This is EDA.How can I assist you?
+			<span class="chat_message_time"></span>
+			</p></li></ul></div>
+					<div class="msg_push"></div>   						
+			</div>
+			
+		</div>   
+    
+    <div class="chat-input-holder cancel_drag">
+      <textarea class="chat-input " id="msg_input" placeholder="Chat here..."></textarea>
+      <input type="submit"  value="Send" class="message-send btn btn-primary" />
+    </div>
+	<div class="attachment-panel">
+	<a href="#" class="fa fa-paperclip upload-form-click" style="font-size:25px"></a>
+		
+		<form id="upload-form" method="post" style="display:none;"
+											enctype="multipart/form-data">
+											<input type="hidden" name="threadid" id="thread"> 
+											<input type="file" name="file"
+												onchange="readURL(this);" id="uploadfile"
+												style="max-height: 10px;">
+										</form>
+    </div>
+
+    <!-- <div class="attachment-panel">
+      <a href="#" class="fa fa-thumbs-up"></a>
+      <a href="#" class="fa fa-camera"></a>
+      <a href="#" class="fa fa-video-camera"></a>
+      <a href="#" class="fa fa-image"></a>
+      <a href="#" class="fa fa-paperclip"></a>
+      <a href="#" class="fa fa-link"></a>
+      <a href="#" class="fa fa-trash-o"></a>
+      <a href="#" class="fa fa-search"></a>
+    </div> -->
+	<div class="footer" style="width:100%;">
+		<span class="pull-right" style="margin:3px;">Powered by <span style="color:#000;">EDA</span></span>
+	</div>
+  </div>
+  
+</div>
+    <script  src="resources/js/index.js"></script>
+    <script src="resources/js/uikit.min.js"></script>
+    
+</body>
+</html>
